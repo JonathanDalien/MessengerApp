@@ -83,7 +83,7 @@ const Profile = () => {
                     <h3>{user?.name}</h3>
                     <p>{user?.email}</p>
                     <hr />
-                    <small>Beigetreten am: {user.createdAt.toDate().toDateString()}</small>
+                    <small>Beigetreten am: {user.createdAt.toDate().toLocaleDateString('de-DE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</small>
                 </div>
             </div>
         </div>
