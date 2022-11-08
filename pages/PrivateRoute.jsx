@@ -1,13 +1,20 @@
 import React, { useContext } from 'react'
-import { AuthContext } from '../src/context/auth'
-import { Outlet, Route, Navigate } from "react-router-dom"
-import { auth } from '../src/firebase';
+import {
+    Routes,
+    Route,
+    Link,
+    Navigate,
+    Outlet,
+} from 'react-router-dom';
 
+const PrivateRoute = ({ user, redirectPath = "/login", children }) => {
 
-const PrivateRoute = () => {
-    const { user } = useContext(AuthContext);
+    if (!user) {
+        return <Navigate to={redirectPath} replace />;
+    }
 
-    return user ? <Outlet /> : <Navigate to="/login" />
-}
+    return children ? children : <Outlet />;
+
+};
 
 export default PrivateRoute
