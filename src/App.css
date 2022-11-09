@@ -127,3 +127,143 @@ nav div a {
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
+.home_container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    overflow: hidden;
+    height: calc(100vh - 70px);
+    width: 100vw;
+}
+
+.users_container {
+    margin-top: 10px;
+    border-right: 2px solid #333;
+    overflow-y: auto;
+}
+
+.user_wrapper {
+    margin-bottom: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.user_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user_detail {
+    display: flex;
+    align-items: center;
+}
+
+.user_detail h4 {
+    margin-left: 10px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+.user_status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.online {
+    background: #34eb52;
+}
+
+.offline {
+    background: #eb4034;
+}
+
+.messages_container {
+    position: relative;
+    width: 100%;
+}
+
+.messages_user {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+.no_conv {
+    font-size: 20px;
+    color: gray;
+    text-align: center;
+}
+
+.message_form {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.message_form input {
+    width: 40vw;
+    margin: 0px 10px 10px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.message_form .btn {
+    margin-top: -10px;
+}
+
+.messages {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+    border-bottom: 1px solid #333;
+}
+
+.message_wrapper {
+    margin-top: 5px;
+    padding: 0px 5px;
+}
+
+.message_wrapper img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.message_wrapper p {
+    padding: 10px;
+    display: inline-block;
+    max-width: 50%;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.message_wrapper small {
+    display: inline-block;
+    margin-top: 15px;
+    opacity: 0.8;
+}
+
+.message_wrapper.own {
+    text-align: right;
+}
+
+.me {
+    background: #0084ff;
+    color: white;
+}
+
+.friend {
+    background: #333;
+}
