@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Camera from '../components/svg/camera'
+import Camera from '../components/svg/Camera'
 import Delete from "../components/svg/Delete"
 import IMG from "../src/Portrait_Placeholder.png"
 import { storage, db, auth } from '../src/firebase'
