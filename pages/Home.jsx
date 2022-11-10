@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { db, auth, storage } from '../src/firebase'
-import { collection, query, where, onSnapshot, addDoc, Timestamp, orderBy } from 'firebase/firestore'
+import { collection, query, where, onSnapshot, addDoc, Timestamp, orderBy, setDoc, doc, getDoc, updateDoc } from 'firebase/firestore'
 import User from '../components/User'
 import MessagesForm from '../components/MessagesForm'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
@@ -32,7 +32,7 @@ const Home = () => {
         return () => unsub();
     }, [])
 
-    const selectUser = (user) => {
+    const selectUser = async (user) => {
         setChat(user)
 
         const user2 = user.uid
@@ -48,7 +48,13 @@ const Home = () => {
             })
             setMsgs(msgs)
         })
-        console.log(msgs)
+        // Letzte Nachricht kriegen, die zwischen logged user & selected user versendet wurde
+        const docSnap = await getDoc(doc(db, "lastMsg", id))
+        // Falls die letzte Nachricht existiert und die nachricht vom selected user ist
+        if (docSnap.data() && docSnap.data().from !== user1) {
+            // wird beim klick im backend die unread property auf false gesetzt
+            await updateDoc(doc(db, "lastMsg", id), { unread: false })
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -72,13 +78,23 @@ const Home = () => {
             createdAt: Timestamp.fromDate(new Date()),
             media: url || ""
         })
+
+        await setDoc(doc(db, "lastMsg", id), {
+            text,
+            from: user1,
+            to: user2,
+            createdAt: Timestamp.fromDate(new Date()),
+            media: url || "",
+            unread: true,
+        })
+
         setText("")
     }
 
     return (
         <div className='home_container'>
             <div className="users_container">
-                {users.map(user => <User key={user.uid} user={user} selectUser={selectUser} />)}
+                {users.map(user => <User key={user.uid} user={user} selectUser={selectUser} user1={user1} chat={chat} />)}
             </div>
             <div className="messages_container">
                 {chat ?
