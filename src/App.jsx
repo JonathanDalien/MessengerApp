@@ -7,6 +7,7 @@ import "./App.css"
 import { AuthContext } from '../src/context/auth'
 import { useContext } from "react"
 import Profile from "../pages/Profile"
+import UserProtectedRoute from "../pages/UserProtectedRoute"
 
 function App() {
 
@@ -22,8 +23,14 @@ function App() {
         <PrivateRoute user={user}>
           <Profile />
         </PrivateRoute>} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={
+        <UserProtectedRoute user={user}>
+          <Register />
+        </UserProtectedRoute>} />
+      <Route path="/login" element={
+        <UserProtectedRoute user={user}>
+          <Login />
+        </UserProtectedRoute>} />
     </Routes>
   )
 }
