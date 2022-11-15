@@ -3,8 +3,10 @@ import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth, db } from '../src/firebase';
 import { doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { TabTitle } from '../src/utils/GeneralFunctions';
 
 const Login = () => {
+    TabTitle("Login")
 
     const [data, setData] = useState({
         email: "",

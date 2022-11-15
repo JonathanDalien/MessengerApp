@@ -5,7 +5,9 @@ import User from '../components/User'
 import MessagesForm from '../components/MessagesForm'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import Message from '../components/Message'
+import { TabTitle } from '../src/utils/GeneralFunctions'
 const Home = () => {
+    TabTitle("Messenger")
 
     const [users, setUsers] = useState([]);
     const [chat, setChat] = useState("");

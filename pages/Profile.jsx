@@ -5,8 +5,10 @@ import IMG from "../src/Portrait_Placeholder.png"
 import { storage, db, auth } from '../src/firebase'
 import { ref, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage'
 import { getDoc, doc, updateDoc } from 'firebase/firestore'
+import { TabTitle } from '../src/utils/GeneralFunctions'
 
 const Profile = () => {
+    TabTitle("Profil")
     const [img, setImg] = useState("");
     const [user, setUser] = useState();
 

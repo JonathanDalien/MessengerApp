@@ -4,8 +4,11 @@ import { auth, db } from '../src/firebase';
 import { doc, setDoc } from "firebase/firestore";
 import { Timestamp } from 'firebase/firestore';
 import { useNavigate } from "react-router-dom";
+import { TabTitle } from '../src/utils/GeneralFunctions';
 
 const Register = () => {
+    TabTitle("Register")
+
 
     const [data, setData] = useState({
         name: "",
